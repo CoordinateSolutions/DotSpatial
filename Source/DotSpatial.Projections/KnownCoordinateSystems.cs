@@ -21,13 +21,13 @@ namespace DotSpatial.Projections
         /// Geographic systems operate in angular units, but can use different
         /// spheroid definitions or angular offsets.
         /// </summary>
-        private static GeographicSystems _geographic;
+        private static readonly GeographicSystems _geographic = new GeographicSystems();
 
         /// <summary>
         /// Projected systems are systems that use linear units like meters or feet
         /// rather than angular units like degrees or radians
         /// </summary>
-        private static ProjectedSystems _projected;
+        private static readonly ProjectedSystems _projected = new ProjectedSystems();
 
         /// <summary>
         /// Projected systems are systems that use linear units like meters or feet
@@ -35,7 +35,7 @@ namespace DotSpatial.Projections
         /// </summary>
         public static ProjectedSystems Projected
         {
-            get { return _projected ?? (_projected = new ProjectedSystems()); }
+            get { return _projected; }
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace DotSpatial.Projections
         /// </summary>
         public static GeographicSystems Geographic
         {
-            get { return _geographic ?? (_geographic = new GeographicSystems()); }
+            get { return _geographic; }
         }
     }
 }
